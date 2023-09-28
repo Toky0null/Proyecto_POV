@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package view;
 
     import javax.swing.*;
@@ -21,28 +18,31 @@ public class InitialWindow extends JFrame {
     private JLabel L_geometricFig;
     private JLabel L_creators;
     private JLabel L_color;
-    // Variable para el boton de iniciar y salir.
-    private JButton btnSalir;
-    private JButton btnIniciar;
+    
+    // Variables para los botones del menu.
+    private JButton B_getOut;
+    private JButton B_init;
+    private JButton B_instructions;
+    
     // Variable para el JTextFiel de la ventana.
-    private JTextField TFnombre;
+    private JTextField TFname;
+    
     // Variable para colocar el fondo de la ventana.
     private background background;
+    
     // Variable que crea la ventana del juego.
    // private static VentanaNivel1 nivel1;
-    // Variable para mostrar las opciones de colores.
-   // public JComboBox<String> listaColores;
     // Variable para guardar el nombre del jugador.
-    //public static String jugadorLab;
+    public static String player;
     
     
     public InitialWindow() {
         super("Menú Principal");
         settWindow();
         initLabels();
-        //iniciarBotones();
-        //iniciarTextFields();
-        //iniciarVentana2();
+        initButtons();
+        initTextFields();
+        initWindowGame();
         //iniciarColor();
         //cerrarJuego();
     }
@@ -77,6 +77,80 @@ public class InitialWindow extends JFrame {
         this.add(L_creators);
         
     }
+    
+    //metodo que inicia los botones
+    public void initButtons(){
+        B_init = new JButton("Iniciar");
+        B_init.setOpaque(true);
+        B_init.setBounds(125, 175, 110, 35);
+        B_init.setFont(new Font("Arial Black", 0, 16));
+        B_init.setHorizontalAlignment(SwingConstants.CENTER);
+        B_init.setBackground(new Color(240, 240, 240));
+        B_init.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.add(B_init);
+    
+        
+        B_instructions = new JButton ("Instruciones");
+        B_instructions.setOpaque(true);
+        B_instructions.setBounds(125, 230, 110, 35);
+        B_instructions.setFont(new Font("Arial Black", 0, 11));
+        B_instructions.setHorizontalAlignment(SwingConstants.CENTER);
+        B_instructions.setBackground(new Color(240, 240, 240));
+        B_instructions.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.add(B_instructions);
+        
+        
+        B_getOut = new JButton("Salir");
+        B_getOut.setOpaque(true);
+        B_getOut.setBounds(125, 280, 110, 35);
+        B_getOut.setFont(new Font("Arial Black", 0, 16));
+        B_getOut.setHorizontalAlignment(SwingConstants.CENTER);
+        B_getOut.setBackground(new Color(240, 240, 240));
+        B_getOut.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.add(B_getOut);
+        
+    }
+    
+     // Método para crear la caja de texto de la ventana.
+    public void initTextFields() {
+        TFname = new JTextField(10);
+        TFname.setBounds(105, 105, 150, 35);
+        TextPrompt placeholder = new TextPrompt("Ingrese su sombre", TFname);
+        placeholder.setFont(new Font("Arial", 2, 13));
+        placeholder.setForeground(Color.lightGray);
+        this.add(TFname);
+    }
+    
+   //metodo para iniciar ventanas secundarias 
+    public void initWindowGame (){
+        B_init.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                
+                player = TFname.getText();
+                if (player.length() == 0) {
+                    player = "User";
+                }
+
+                //level1 = new windowsLevel1(player);
+
+                // Controlador
+                //controller buffer = new controller();
+                //level *****.addKeyListener();
+
+                
+                //Music sountrac = new Music();
+                //soundtrac.AudioIniciar();
+                //level1.setVisible(true); 
+            }
+        });     
+    }    
+        
+        
+    
+    
+    
 }
 
 
