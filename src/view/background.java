@@ -10,7 +10,7 @@ package view;
 /**
  + Clase que extiende de JPanel y se encarga de dibujar una imagen de fondo en el panel.
 */
-public class background extends JPanel {
+public class BackGround extends JPanel {
     
     private ImageIcon imgbackground;
     

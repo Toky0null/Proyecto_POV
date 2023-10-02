@@ -17,7 +17,7 @@ public class InitialWindow extends JFrame {
     // Variables para los JLabel de la ventana.
     private JLabel L_geometricFig;
     private JLabel L_creators;
-    private JLabel L_color;
+   
     
     // Variables para los botones del menu.
     private JButton B_getOut;
@@ -28,13 +28,13 @@ public class InitialWindow extends JFrame {
     private JTextField TFname;
     
     // Variable para colocar el fondo de la ventana.
-    private background background;
-    
+    private BackGround background;
     // Variable que crea la ventana del juego.
-   // private static VentanaNivel1 nivel1;
+    private static LevelOne level1;
     // Variable para guardar el nombre del jugador.
     public static String player;
-    
+    //Variable para crear la ventana de instrucciones
+    public static WindowsIntr instr; 
     
     public InitialWindow() {
         super("Menú Principal");
@@ -43,13 +43,13 @@ public class InitialWindow extends JFrame {
         initButtons();
         initTextFields();
         initWindowGame();
-        //iniciarColor();
-        //cerrarJuego();
+        initWindowsIntr();
+        getOut();
     }
     
     // Método para la Configuracion de la ventana.
     public void settWindow(){
-        background = new background();
+        background = new BackGround();
         this.setContentPane(background);
         this.setSize(360, 390);
         this.setLocationRelativeTo(null);
@@ -121,7 +121,7 @@ public class InitialWindow extends JFrame {
         this.add(TFname);
     }
     
-   //metodo para iniciar ventanas secundarias 
+   //metodo para iniciar ventana inicio de juego
     public void initWindowGame (){
         B_init.addActionListener(new ActionListener() {
             @Override
@@ -133,7 +133,7 @@ public class InitialWindow extends JFrame {
                     player = "User";
                 }
 
-                //level1 = new windowsLevel1(player);
+                level1 = new LevelOne(player);
 
                 // Controlador
                 //controller buffer = new controller();
@@ -142,14 +142,46 @@ public class InitialWindow extends JFrame {
                 
                 //Music sountrac = new Music();
                 //soundtrac.AudioIniciar();
-                //level1.setVisible(true); 
+                level1.setVisible(true); 
+                
             }
         });     
     }    
         
+    public void initWindowsIntr(){
+       B_instructions.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                
+                
+
+                instr = new WindowsIntr();
+
+                // Controlador
+                //controller buffer = new controller();
+                //level *****.addKeyListener();
+
+                
+                //Music sountrac = new Music();
+                //soundtrac.AudioIniciar();
+                instr.setVisible(true); 
+            }
+        });     
         
+    }    
     
+    public void getOut(){
     
+      B_getOut.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(InitialWindow.this, "¡Gracias por jugar! :)");
+                System.exit(0);
+            }
+        });
+    
+    } 
     
 }
 
