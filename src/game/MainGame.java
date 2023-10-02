@@ -9,8 +9,7 @@ import view.InitialWindow;
  */
 public class MainGame {
     
-    public static void main(String[] args) {
-        // TODO code application logic here       
+    public static void main(String[] args) {     
         //System.out.println("Hello World!"); 
         InitialWindow ventana = new InitialWindow();
         ventana.setVisible(true);

@@ -7,7 +7,7 @@ package view;
     import java.awt.event.ActionListener;
     import java.awt.Font;
    // import controller.Controlador;
-   // import model.Music;
+    import model.Music;
 /**
  *
  * @author Soporte
@@ -140,8 +140,8 @@ public class InitialWindow extends JFrame {
                 //level *****.addKeyListener();
 
                 
-                //Music sountrac = new Music();
-                //soundtrac.AudioIniciar();
+                Music soundtrack = new Music();
+                soundtrack.soundtrackstart();
                 level1.setVisible(true); 
                 
             }
@@ -163,8 +163,8 @@ public class InitialWindow extends JFrame {
                 //level *****.addKeyListener();
 
                 
-                //Music sountrac = new Music();
-                //soundtrac.AudioIniciar();
+                Music soundtrack = new Music();
+                soundtrack.soundtrackstart();
                 instr.setVisible(true); 
             }
         });     
