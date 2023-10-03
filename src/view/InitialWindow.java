@@ -8,6 +8,7 @@ package view;
     import java.awt.Font;
    // import controller.Controlador;
     import model.Music;
+    import model.Player;
 /**
  *
  * @author Soporte
@@ -26,6 +27,8 @@ public class InitialWindow extends JFrame {
     
     // Variable para el JTextFiel de la ventana.
     private JTextField TFname;
+   // Marcar que el sonido se ha iniciado 
+    public boolean soundstarted;
     
     // Variable para colocar el fondo de la ventana.
     private BackGround background;
@@ -35,6 +38,8 @@ public class InitialWindow extends JFrame {
     public static String player;
     //Variable para crear la ventana de instrucciones
     public static WindowsIntr instr; 
+    private Player playert;
+    
     
     public InitialWindow() {
         super("Menú Principal");
@@ -128,22 +133,26 @@ public class InitialWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 
-                player = TFname.getText();
-                if (player.length() == 0) {
-                    player = "User";
+                playert = new Player(TFname.getText());
+                if (playert.getPlayerLg()== 0) {
+                    playert.setPlayerName();
                 }
 
-                level1 = new LevelOne(player);
+                level1 = new LevelOne(playert.getPlayerName());
+                
 
                 // Controlador
                 //controller buffer = new controller();
                 //level *****.addKeyListener();
 
+            if (!soundstarted){
                 
                 Music soundtrack = new Music();
                 soundtrack.soundtrackstart();
-                level1.setVisible(true); 
-                
+                soundstarted = true; // Marcar que el sonido se ha iniciado
+           
+                }
+             level1.setVisible(true); 
             }
         });     
     }    
@@ -162,9 +171,6 @@ public class InitialWindow extends JFrame {
                 //controller buffer = new controller();
                 //level *****.addKeyListener();
 
-                
-                Music soundtrack = new Music();
-                soundtrack.soundtrackstart();
                 instr.setVisible(true); 
             }
         });     

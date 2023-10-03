@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Soporte/Documents/NetBeansProjects/GameUni/src/view/InitialWindow.java</file>
-            <file>file:/C:/Users/Soporte/Documents/NetBeansProjects/GameUni/src/game/MainGame.java</file>
-            <file>file:/C:/Users/Soporte/Documents/NetBeansProjects/GameUni/src/view/background.java</file>
+            <file>file:/home/tokyo/Desktop/Proyecto_POV/src/model/Statistics.java</file>
+            <file>file:/home/tokyo/Desktop/Proyecto_POV/src/view/InitialWindow.java</file>
+            <file>file:/home/tokyo/Desktop/Proyecto_POV/src/view/WindowsIntr.java</file>
+            <file>file:/home/tokyo/Desktop/Proyecto_POV/src/game/MainGame.java</file>
+            <file>file:/home/tokyo/Desktop/Proyecto_POV/src/model/Player.java</file>
         </group>
     </open-files>
 </project-private>
