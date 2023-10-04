@@ -23,7 +23,7 @@ public class Statistics {
     setFailures();
     setSuccesses();
     figureShown = 1;
-    attempts = 1;
+    attempts = 0;
     failures = 0;
     successes = 0;
 
