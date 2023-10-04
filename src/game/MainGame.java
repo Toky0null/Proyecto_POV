@@ -5,7 +5,7 @@ import view.InitialWindow;
 
 /**
  *
- * @author Soporte
+ * @author tokyo
  */
 public class MainGame {
     

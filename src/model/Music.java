@@ -8,13 +8,14 @@ import java.io.*;
  */
 
 public class Music {
+    
 
     /**
      * Método encargado de buscar y reproducir el audio.
      * @param
      * @return
      */
-    public void soundtrackstart() {
+    public void soundtrackstart(float volume) {
         try {
             // Carga el archivo de audio
             File audioFile = new File("src/audio.wav");
@@ -23,6 +24,14 @@ public class Music {
             // Obtiene un Clip para reproducir el audio
             Clip audioClip = AudioSystem.getClip();
             audioClip.open(audioStream);
+            
+            
+            // Ajusta el volumen de reproducción
+            if (audioClip.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
+                FloatControl gainControl = (FloatControl) audioClip.getControl(FloatControl.Type.MASTER_GAIN);
+                // Establece el valor de ganancia para reducir el volumen
+                gainControl.setValue(volume);
+            }
     
             // Reproduce el audio
             audioClip.start();

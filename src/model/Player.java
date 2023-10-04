@@ -14,9 +14,9 @@ public class Player {
     
     public Player(String name){
     this.namePlayer = name;
-    // getPlayerName();
-    //setPlayerName();
-      getPlayerLg ();
+    getPlayerName();
+    setPlayerName();
+    getPlayerLg ();
     }
     
     public String getPlayerName (){

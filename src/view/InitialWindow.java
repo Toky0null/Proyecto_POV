@@ -11,45 +11,43 @@ package view;
     import model.Player;
 /**
  *
- * @author Soporte
+ * @author tokyo
  */
-public class InitialWindow extends JFrame {
-    
+public class InitialWindow extends JFrame {   
     // Variables para los JLabel de la ventana.
-    private JLabel L_geometricFig;
-    private JLabel L_creators;
+    private JLabel geometricFig;
+    private JLabel creators;
    
     
     // Variables para los botones del menu.
-    private JButton B_getOut;
-    private JButton B_init;
-    private JButton B_instructions;
-    
+    private JButton getOut;
+    private JButton init;
+    private JButton instructions;    
     // Variable para el JTextFiel de la ventana.
     private JTextField TFname;
    // Marcar que el sonido se ha iniciado 
-    public boolean soundstarted;
-    
+    private boolean soundstarted;   
     // Variable para colocar el fondo de la ventana.
     private BackGround background;
     // Variable que crea la ventana del juego.
-    private static LevelOne level1;
+    private static Levels levels;
     // Variable para guardar el nombre del jugador.
     public static String player;
     //Variable para crear la ventana de instrucciones
     public static WindowsIntr instr; 
-    private Player playert;
-    
+    private Player playerT;
+    private float volume;
     
     public InitialWindow() {
         super("Menú Principal");
         settWindow();
-        initLabels();
+        initiaLabels();
         initButtons();
         initTextFields();
-        initWindowGame();
+        initialWindowGame();
         initWindowsIntr();
         getOut();
+        
     }
     
     // Método para la Configuracion de la ventana.
@@ -60,59 +58,60 @@ public class InitialWindow extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setLayout(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        
     }
     
     //metodo que se encarga de iniciar las etiquetas de la ventana.
-    public void initLabels(){
-        L_geometricFig = new JLabel ("Geometric");
-        L_geometricFig.setOpaque(true);
-        L_geometricFig.setBounds(80, 30, 200, 40);
-        L_geometricFig.setFont(new Font("Arial Black", 1, 30));
-        L_geometricFig.setHorizontalAlignment(SwingConstants.CENTER);
-        L_geometricFig.setBackground(new Color(255, 255, 255, 0));
-        this.add(L_geometricFig);  
+    public void initiaLabels(){
+        geometricFig = new JLabel ("Geometric");
+        geometricFig.setOpaque(true);
+        geometricFig.setBounds(80, 30, 200, 40);
+        geometricFig.setFont(new Font("Arial Black", 1, 30));
+        geometricFig.setHorizontalAlignment(SwingConstants.CENTER);
+        geometricFig.setBackground(new Color(255, 255, 255, 0));
+        this.add(geometricFig);  
         
-        L_creators = new JLabel ("by:@Toky0null");
-        L_creators.setOpaque(true);
-        L_creators.setBounds(182, 325, 200, 30);
-        L_creators.setFont(new Font("Arial", 0, 11));
-        L_creators.setHorizontalAlignment(SwingConstants.CENTER);
-        L_creators.setBackground(new Color(255, 255, 255, 0));
-        this.add(L_creators);
+        creators = new JLabel ("by:@Toky0null");
+        creators.setOpaque(true);
+        creators.setBounds(182, 325, 200, 30);
+        creators.setFont(new Font("Arial", 0, 11));
+        creators.setHorizontalAlignment(SwingConstants.CENTER);
+        creators.setBackground(new Color(255, 255, 255, 0));
+        this.add(creators);
         
     }
     
     //metodo que inicia los botones
     public void initButtons(){
-        B_init = new JButton("Iniciar");
-        B_init.setOpaque(true);
-        B_init.setBounds(125, 175, 110, 35);
-        B_init.setFont(new Font("Arial Black", 0, 16));
-        B_init.setHorizontalAlignment(SwingConstants.CENTER);
-        B_init.setBackground(new Color(240, 240, 240));
-        B_init.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        this.add(B_init);
+        init = new JButton("Iniciar");
+        init.setOpaque(true);
+        init.setBounds(125, 175, 110, 35);
+        init.setFont(new Font("Arial Black", 0, 16));
+        init.setHorizontalAlignment(SwingConstants.CENTER);
+        init.setBackground(new Color(240, 240, 240));
+        init.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.add(init);
     
         
-        B_instructions = new JButton ("Instruciones");
-        B_instructions.setOpaque(true);
-        B_instructions.setBounds(125, 230, 110, 35);
-        B_instructions.setFont(new Font("Arial Black", 0, 11));
-        B_instructions.setHorizontalAlignment(SwingConstants.CENTER);
-        B_instructions.setBackground(new Color(240, 240, 240));
-        B_instructions.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        this.add(B_instructions);
+        instructions = new JButton ("Instruciones");
+        instructions.setOpaque(true);
+        instructions.setBounds(125, 230, 110, 35);
+        instructions.setFont(new Font("Arial Black", 0, 11));
+        instructions.setHorizontalAlignment(SwingConstants.CENTER);
+        instructions.setBackground(new Color(240, 240, 240));
+        instructions.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.add(instructions);
         
         
-        B_getOut = new JButton("Salir");
-        B_getOut.setOpaque(true);
-        B_getOut.setBounds(125, 280, 110, 35);
-        B_getOut.setFont(new Font("Arial Black", 0, 16));
-        B_getOut.setHorizontalAlignment(SwingConstants.CENTER);
-        B_getOut.setBackground(new Color(240, 240, 240));
-        B_getOut.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        this.add(B_getOut);
+        getOut = new JButton("Salir");
+        getOut.setOpaque(true);
+        getOut.setBounds(125, 280, 110, 35);
+        getOut.setFont(new Font("Arial Black", 0, 16));
+        getOut.setHorizontalAlignment(SwingConstants.CENTER);
+        getOut.setBackground(new Color(240, 240, 240));
+        getOut.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.add(getOut);
         
     }
     
@@ -127,18 +126,18 @@ public class InitialWindow extends JFrame {
     }
     
    //metodo para iniciar ventana inicio de juego
-    public void initWindowGame (){
-        B_init.addActionListener(new ActionListener() {
+    public void initialWindowGame (){
+        init.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 
-                playert = new Player(TFname.getText());
-                if (playert.getPlayerLg()== 0) {
-                    playert.setPlayerName();
+                playerT = new Player(TFname.getText());
+                if (playerT.getPlayerLg()== 0) {
+                    playerT.setPlayerName();
                 }
 
-                level1 = new LevelOne(playert.getPlayerName());
+                levels = new Levels(playerT.getPlayerName());
                 
 
                 // Controlador
@@ -148,29 +147,22 @@ public class InitialWindow extends JFrame {
             if (!soundstarted){
                 
                 Music soundtrack = new Music();
-                soundtrack.soundtrackstart();
+                volume = -15.0f;
+                soundtrack.soundtrackstart(volume);
                 soundstarted = true; // Marcar que el sonido se ha iniciado
            
                 }
-             level1.setVisible(true); 
+                levels.setVisible(true); 
             }
         });     
     }    
-        
+       
     public void initWindowsIntr(){
-       B_instructions.addActionListener(new ActionListener() {
+       instructions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 
-                
-
                 instr = new WindowsIntr();
-
-                // Controlador
-                //controller buffer = new controller();
-                //level *****.addKeyListener();
-
                 instr.setVisible(true); 
             }
         });     
@@ -179,7 +171,7 @@ public class InitialWindow extends JFrame {
     
     public void getOut(){
     
-      B_getOut.addActionListener(new ActionListener() {
+      getOut.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(InitialWindow.this, "¡Gracias por jugar! :)");
@@ -188,6 +180,10 @@ public class InitialWindow extends JFrame {
         });
     
     } 
+    
+    public String  getname(){
+    return TFname.getText();
+    }
     
 }
 
