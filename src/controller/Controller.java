@@ -9,6 +9,11 @@ import java.util.Random;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Music;
+import model.Player;
+import view.InitialWindow;
+import view.Levels;
+import view.WindowsIntr;
 
 /**
  *
@@ -17,6 +22,14 @@ import java.util.logging.Logger;
 public class Controller {
     private int num1, num2;
     private Random random,randomImg;
+    private InitialWindow initialWindows;
+    private WindowsIntr windowsIntr;
+    private Player player;
+    private Levels levels;
+    private Music soundtrack;
+    private boolean soundStarted;
+    private float volume;
+  
      
     private static final String[][] IMAGE_GROUPS = {
     {  
@@ -64,6 +77,9 @@ public class Controller {
        random = new Random();
        randomImg = new Random(); 
        unusedImageGroups = new ArrayList<>();
+       this.soundStarted = false;
+       initialWindows = new InitialWindow(this);
+       windowsIntr = new WindowsIntr(this);
        // Agregar todos los grupos de imágenes a la lista de no utilizados
         Collections.addAll(unusedImageGroups, IMAGE_GROUPS);
         // Mezclar la lista para obtener grupos aleatorios
@@ -113,6 +129,39 @@ public class Controller {
         } else {
             return null; // Se han utilizado todos los grupos de imágenes
         }
+    }
+    
+    
+    public void startGame(String playerName) {
+        player = new Player(playerName);
+    
+        if (playerName.isEmpty()) {
+        playerName = "User";
+        }
+        
+        levels = new Levels(playerName, this);
+
+        if (!soundStarted) {
+            soundtrack = new Music();
+            volume = -15.0f;
+            soundtrack.soundtrackstart(volume);
+            soundStarted = true;
+        }
+
+        levels.setVisible(true);
+    }
+
+    public void startIntroduccion (){
+    
+     windowsIntr.setVisible(true);
+    
+    } 
+    
+    public void getPlayErrorSound(){
+         soundtrack.playErrorSound();
+    }
+     public void getpPlayCorrectSound(){
+         soundtrack.playCorrectSound();
     }
     
 }

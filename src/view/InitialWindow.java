@@ -1,14 +1,14 @@
 
 package view;
 
-    import javax.swing.*;
-    import java.awt.*;
-    import java.awt.event.ActionEvent;
-    import java.awt.event.ActionListener;
-    import java.awt.Font;
-   // import controller.Controlador;
-    import model.Music;
-    import model.Player;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.Font;
+// import controller.Controlador;
+import controller.Controller;
 /**
  *
  * @author tokyo
@@ -16,30 +16,23 @@ package view;
 public class InitialWindow extends JFrame {   
     // Variables para los JLabel de la ventana.
     private JLabel geometricFig;
-    private JLabel creators;
-   
-    
+    private JLabel creators;   
     // Variables para los botones del menu.
     private JButton getOut;
     private JButton init;
     private JButton instructions;    
     // Variable para el JTextFiel de la ventana.
-    private JTextField TFname;
-   // Marcar que el sonido se ha iniciado 
-    private boolean soundstarted;   
+    public JTextField TFname;
     // Variable para colocar el fondo de la ventana.
     private BackGround background;
-    // Variable que crea la ventana del juego.
-    private static Levels levels;
-    // Variable para guardar el nombre del jugador.
-    public static String player;
     //Variable para crear la ventana de instrucciones
     public static WindowsIntr instr; 
-    private Player playerT;
-    private float volume;
+    public String playerT;
+    private Controller controller;
     
-    public InitialWindow() {
+    public InitialWindow(Controller controller) {
         super("Menú Principal");
+        this.controller = controller;
         settWindow();
         initiaLabels();
         initButtons();
@@ -47,6 +40,7 @@ public class InitialWindow extends JFrame {
         initialWindowGame();
         initWindowsIntr();
         getOut();
+       
         
     }
     
@@ -115,11 +109,11 @@ public class InitialWindow extends JFrame {
         
     }
     
-     // Método para crear la caja de texto de la ventana.
+    // Método para crear la caja de texto de la ventana.
     public void initTextFields() {
         TFname = new JTextField(10);
         TFname.setBounds(105, 105, 150, 35);
-        TextPrompt placeholder = new TextPrompt("Ingrese su sombre", TFname);
+        TextPrompt placeholder = new TextPrompt("Ingrese su nombre", TFname);
         placeholder.setFont(new Font("Arial", 2, 13));
         placeholder.setForeground(Color.lightGray);
         this.add(TFname);
@@ -127,46 +121,26 @@ public class InitialWindow extends JFrame {
     
    //metodo para iniciar ventana inicio de juego
     public void initialWindowGame (){
-        init.addActionListener(new ActionListener() {
+         init.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                
-                playerT = new Player(TFname.getText());
-                if (playerT.getPlayerLg()== 0) {
-                    playerT.setPlayerName();
+                playerT = TFname.getText();
+                if (!playerT.isEmpty()) {
+                    controller.startGame(playerT);
                 }
-
-                levels = new Levels(playerT.getPlayerName());
-                
-
-                // Controlador
-                //controller buffer = new controller();
-                //level *****.addKeyListener();
-
-            if (!soundstarted){
-                
-                Music soundtrack = new Music();
-                volume = -15.0f;
-                soundtrack.soundtrackstart(volume);
-                soundstarted = true; // Marcar que el sonido se ha iniciado
-           
-                }
-                levels.setVisible(true); 
             }
-        });     
+        });
     }    
        
     public void initWindowsIntr(){
        instructions.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                
-                instr = new WindowsIntr();
-                instr.setVisible(true); 
-            }
+            public void actionPerformed(ActionEvent e) {     
+              controller.startIntroduccion();
+               
+            } 
         });     
-        
+         
     }    
     
     public void getOut(){
@@ -183,6 +157,10 @@ public class InitialWindow extends JFrame {
     
     public String  getname(){
     return TFname.getText();
+    }
+
+    public void setController(Controller controller) {
+       this.controller = controller;
     }
     
 }

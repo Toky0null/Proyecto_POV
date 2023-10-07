@@ -1,7 +1,9 @@
 
 package game;
 
+import controller.Controller;
 import view.InitialWindow;
+import view.WindowsIntr;
 
 /**
  *
@@ -10,9 +12,11 @@ import view.InitialWindow;
 public class MainGame {
     
     public static void main(String[] args) {     
-        //System.out.println("Hello World!"); 
-        InitialWindow ventana = new InitialWindow();
-        ventana.setVisible(true);
+       Controller controller = new Controller();
+        // Crear una instancia de InitialWindow y pasar el controlador como argumento
+        InitialWindow initialWindow = new InitialWindow(controller);
+        // Mostrar la ventana inicial
+        initialWindow.setVisible(true);
     }
     
 }

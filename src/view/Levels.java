@@ -49,16 +49,17 @@ public class Levels extends JFrame {
     private Controller controllerGame;
     private String[] imageGroup;
     private  int groupSize;
-    private EndGameWindow endGame; 
+    private EndGameWindow endGame;
     /**
      * Constructor de la clase que recibe el nombre del jugador
      * @param namePlayer nombre del jugador
      */
-    public Levels(String namePlayer ){
+    public Levels(String namePlayer, Controller controllerGame ){
         //Establecemos el título de la ventana con el nombre del jugador
         super("Geometric-Jugador: " + namePlayer);
+        this.controllerGame= controllerGame;
         statisicsGame = new Statistics();
-        controllerGame = new Controller();
+        
         imageGroup = controllerGame.getRandomImageGroup();
         settWindowLv();
         settPanelUp();
@@ -172,13 +173,16 @@ public class Levels extends JFrame {
          public void mouseClicked(java.awt.event.MouseEvent evt) {
         // Muestra un mensaje al hacer clic en el panel
         if(winnerP == 0){
+            controllerGame.getpPlayCorrectSound();
             JOptionPane.showMessageDialog(null, "¡Bien hecho!"); 
             statisicsGame.setFigureShown();
             statisicsGame.setAttempts();
             statisicsGame.setSuccesses();
+            
             updateWindow();
         }
         else{
+        controllerGame.getPlayErrorSound();
         statisicsGame.setFailures();
         statisicsGame.setAttempts();
         updateStatisticsLabels();
@@ -198,13 +202,15 @@ public class Levels extends JFrame {
          public void mouseClicked(java.awt.event.MouseEvent evt) {
         // Muestra un mensaje al hacer clic en el panel
         if(winnerP == 1){
-            JOptionPane.showMessageDialog(null, "¡Bien hecho!");  
+            controllerGame.getpPlayCorrectSound();
+            JOptionPane.showMessageDialog(null, "¡Bien hecho!");   
             statisicsGame.setFigureShown();
             statisicsGame.setAttempts();
             statisicsGame.setSuccesses();
             updateWindow();
         }
         else{
+        controllerGame.getPlayErrorSound();
         statisicsGame.setFailures();
         statisicsGame.setAttempts();
         updateStatisticsLabels();
@@ -225,13 +231,15 @@ public class Levels extends JFrame {
         
         
         if(winnerP == 2){
-            JOptionPane.showMessageDialog(null, "¡Bien hecho!");  
+            controllerGame.getpPlayCorrectSound();
+            JOptionPane.showMessageDialog(null, "¡Bien hecho!");            
             statisicsGame.setFigureShown();
             statisicsGame.setAttempts();
             statisicsGame.setSuccesses();
             updateWindow(); 
         }
         else{
+        controllerGame.getPlayErrorSound();
         statisicsGame.setFailures();
         statisicsGame.setAttempts();
         updateStatisticsLabels();

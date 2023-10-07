@@ -1,24 +1,26 @@
 package view;
 
+import controller.Controller;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import model.Music;
-import model.Player;
+
 
 public class WindowsIntr extends JFrame {
     private JLabel titleLabel;
     private JLabel instructionLabel;
     private JButton startButton;
-    private Player playerInstr;
-    private Music soundtrack;
-    private boolean soundstarted;
-    private float volume;
-    private Levels level1;
-    private InitialWindow star;
+    //private Player playerInstr;
+    //private Music soundtrack;
+    private JTextField playerNameField;
+    private Controller controller;
+   // private boolean soundstarted;
+    //private float volume;
+    //private Levels level1;
+    //private InitialWindow star;
 
-    public WindowsIntr() {
+    public WindowsIntr(Controller controller) {
         super("Geometric-Manual de instrucciones");
         setSize(750, 450);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -26,7 +28,7 @@ public class WindowsIntr extends JFrame {
 
         Container paneIntr = getContentPane();
         paneIntr.setLayout(new BorderLayout());
-
+        playerNameField = new JTextField();
         // Crear un panel para centrar el contenido
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new GridBagLayout());
@@ -42,28 +44,16 @@ public class WindowsIntr extends JFrame {
         centerPanel.add(instructionLabel, createGridBagConstraints(0, 1, 2, 1, GridBagConstraints.CENTER));
 
         startButton = new JButton("Iniciar");
-        startButton.addActionListener(new ActionListener() {
+          startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Agrega aquí la lógica para iniciar el juego
-                star = new InitialWindow();
-                playerInstr = new Player(star.getname()); // Usar el nombre del jugador desde InitialWindow
-                if (playerInstr.getPlayerLg() == 0) {  
-                    playerInstr.setPlayerName();
-                }
-
-                level1 = new Levels(playerInstr.getPlayerName());
+                System.out.println("Botón 'Iniciar' clicado"); // Agrega este mensaje de depuración
+                String playerName = playerNameField.getText();
+                controller.startGame(playerName);
                 
-                if (!soundstarted){
-                    soundtrack = new Music();
-                    volume = -15.0f;
-                    soundtrack.soundtrackstart(volume);
-                    soundstarted = true; // Marcar que el sonido se ha iniciado
-                }
-                
-                level1.setVisible(true);
             }
         });
+          
         centerPanel.add(startButton, createGridBagConstraints(0, 2, 2, 1, GridBagConstraints.CENTER));
 
         paneIntr.add(centerPanel, BorderLayout.CENTER);
@@ -78,5 +68,9 @@ public class WindowsIntr extends JFrame {
         gbc.anchor = anchor;
         gbc.insets = new Insets(5, 5, 5, 5); // Márgenes
         return gbc;
+    }
+
+    public void setController(Controller aThis) {
+        this.controller = controller;
     }
 }
