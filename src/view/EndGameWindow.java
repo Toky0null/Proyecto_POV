@@ -1,14 +1,15 @@
-
+/**
+ *
+ * @author tokyo - Juna Sebastian Hurtado Batioja 2179288
+ * @author kevin David Londoño Valencia-2224551
+ */
 package view;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-/**
- *
- * @author tokyo
- */
+
 public class EndGameWindow extends JFrame {
     private Container paneFinish;
     private JLabel titleLabel,attemptsLabel,successesLabel,failuresLabel;

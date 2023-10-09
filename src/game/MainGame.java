@@ -1,14 +1,15 @@
-
+/**
+ *
+ * @author tokyo - Juna Sebastian Hurtado Batioja 2179288
+ * @author kevin David Londoño Valencia-2224551
+ */
 package game;
 
 import controller.Controller;
 import view.InitialWindow;
 import view.WindowsIntr;
 
-/**
- *
- * @author tokyo
- */
+
 public class MainGame {
     
     public static void main(String[] args) {     

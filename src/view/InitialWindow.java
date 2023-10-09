@@ -1,4 +1,8 @@
-
+/**
+ *
+ * @author tokyo - Juna Sebastian Hurtado Batioja 2179288
+ * @author kevin David Londoño Valencia-2224551
+ */
 package view;
 
 
@@ -9,10 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.Font;
 // import controller.Controlador;
 import controller.Controller;
-/**
- *
- * @author tokyo
- */
+
 public class InitialWindow extends JFrame {   
     // Variables para los JLabel de la ventana.
     private JLabel geometricFig;

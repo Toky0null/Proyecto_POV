@@ -1,4 +1,8 @@
-
+/**
+ *
+ * @author tokyo - Juna Sebastian Hurtado Batioja 2179288
+ * @author kevin David Londoño Valencia-2224551
+ */
 package view;
 
 import controller.Controller;
@@ -12,10 +16,7 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import model.Statistics;
 
-/**
- *
- * @author tokyo
- */
+
 public class Levels extends JFrame {
 //private JLabel L_up;
     private JLabel figure1,figure2,figure3;

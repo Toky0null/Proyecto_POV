@@ -1,6 +1,11 @@
+/**
+ *
+ * @author tokyo - Juna Sebastian Hurtado Batioja 2179288
+ * @author kevin David Londoño Valencia-2224551
+ */
 package view;
-    import javax.swing.*;
-    import java.awt.*;
+import javax.swing.*;
+import java.awt.*;
 
 /**
      + Método sobreescrito de JPanel que se encarga de dibujar la imagen de fondo en el panel.

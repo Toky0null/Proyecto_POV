@@ -1,3 +1,9 @@
+/**
+ *
+ * @author tokyo - Juna Sebastian Hurtado Batioja 2179288
+ * @author kevin David Londoño Valencia-2224551
+ */
+
 package controller;
 import java.io.IOException;
 import java.net.URL;
@@ -15,10 +21,7 @@ import view.InitialWindow;
 import view.Levels;
 import view.WindowsIntr;
 
-/**
- *
- * @author tokyo
- */
+
 public class Controller {
     private int num1, num2;
     private Random random,randomImg;

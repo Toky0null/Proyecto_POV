@@ -1,3 +1,8 @@
+/**
+ *
+ * @author tokyo - Juna Sebastian Hurtado Batioja 2179288
+ * @author kevin David Londoño Valencia-2224551
+ */
 
 package view;
 import java.awt.*;
@@ -7,11 +12,7 @@ import javax.swing.border.*;
 import javax.swing.event.*;
 import javax.swing.text.*;
 
-/**
-/**
- *
- * @author Soporte
- */
+
 public class TextPrompt extends JLabel
         implements FocusListener, DocumentListener {
     public enum Show {
